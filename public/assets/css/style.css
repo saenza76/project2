@@ -9,6 +9,27 @@ h1{
   font-size: 100px;
 }
 
+::-webkit-input-placeholder {
+   color: white;
+   font-size: 16px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white;
+   font-size: 16px;
+
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+   font-size: 16px;
+}
+
+:-ms-input-placeholder {  
+   color: white;  
+   font-size: 16px;
+}
+
 /* Theme Style */
 
 nav ul a,
