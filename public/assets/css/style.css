@@ -9,6 +9,10 @@ h1{
   font-size: 100px;
 }
 
+#my-signin2{
+  margin-top: 6px;
+}
+
 ::-webkit-input-placeholder {
    color: white;
    font-size: 16px;
