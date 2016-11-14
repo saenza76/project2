@@ -8,6 +8,7 @@
     <title>Lets Make A Meal</title>
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <!-- Custom Fonts -->
@@ -18,6 +19,7 @@
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">Let's Make A Meal</a>
+            <!-- Sign in w/Google -->
             <div id="my-signin2" class="brand-logo right"></div>
             <script>
             function onSuccess(googleUser) {
@@ -32,6 +34,7 @@
             function onFailure(error) {
                 console.log(error);
             }
+
             function renderButton() {
                 gapi.signin2.render('my-signin2', {
                     'scope': 'profile email',
@@ -56,25 +59,44 @@
                 </div>
                 <div class="row center">
                     <form>
-                    
                     <input type="text" id="ingredient" placeholder="ENTER YOUR MAIN INGREDIENT">
-                    
                     <a href="#" id="recipe-button" class="btn-large waves-effect waves-light red lighten-1">Get Cooking</a>
                     </form>
                 </div>
-                <br>
-                <br>
-            </div>
-        </div>
-        <div class="parallax"><img src="assets/background1.jpg" alt="Unsplashed background img 1"></div>
+        <br>
+        <br>
+    </div>
+    </div>
+    <div class="parallax"><img src="assets/background1.jpg" alt="Unsplashed background img 1"></div>
     </div>
     <div class="container">
         <div class="section">
             <div class="row">
                 <div class="col s12 center">
-                    <h3><i class="mdi-content-send brown-text"></i></h3>
-                    <h4>Recipes Would Go Here</h4>
-                    <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                    <h4>Recipes Go Here</h4>
+                    <div class="section">
+                        <!--   Icon Section   -->
+                        <div class="row">
+                            <div class="col s12 m4">
+                                <div class="icon-block-1">
+                                    <h5 class="center">Recipe 1</h5>
+                                    
+                                </div>
+                            </div>
+                            <div class="col s12 m4">
+                                <div class="icon-block-2">
+                                    <h5 class="center">Recipe 2</h5>
+                                    
+                                </div>
+                            </div>
+                            <div class="col s12 m4">
+                                <div class="icon-block-3">
+                                    <h5 class="center">Recipe 3</h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,7 +139,8 @@
             </div>
         </div>
     </div>
-        <a class="right-algin" href="http://localhost:3000" onclick="signOut();">Sign out</a>
+    <!-- Signout button -->
+    <a class="right-algin" href="http://localhost:3000" onclick="signOut();">Sign out</a>
     <script>
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
