@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="google-signin-client_id" content="995828512035-cselasg16c8hap53ma9ei72ga4e5lum0.apps.googleusercontent.com">
+    <title>Lets Make A Meal</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Let's Make A Meal</a>
+            <!-- Sign in w/Google -->
+            <div id="my-signin2" class="brand-logo right"></div>
+            <script>
+            function onSuccess(googleUser) {
+                // This is where we control what happens after they are logged in
+                var profile = googleUser.getBasicProfile();
+                // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail());
+            }
+
+            function onFailure(error) {
+                console.log(error);
+            }
+
+            function renderButton() {
+                gapi.signin2.render('my-signin2', {
+                    'scope': 'profile email',
+                    'width': 150,
+                    'height': 50,
+                    'onsuccess': onSuccess,
+                    'onfailure': onFailure
+                });
+            }
+            </script>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br>
+                <br>
+                <h1 class="header center white-text text-lighten-2 headerFont">Recipes R' Us</h1>
+                <div class="row center">
+                    <h3 class="header col s12 white-text text-lighten-2 headerFont">Please enter your ingredients below</h5>
+                </div>
+                <div class="row center">
+                    <form>
+                    <input type="text" id="ingredient" placeholder="ENTER YOUR MAIN INGREDIENT">
+                        <button class="btn waves-effect waves-light red lighten-1" type="submit" name="action">Get Cooking</button>
+                    </form>
+                </div>
+        <br>
+        <br>
+    </div>
+    </div>
+    <div class="parallax"><img src="assets/background1.jpg" alt="Unsplashed background img 1"></div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 center">
+                    <h4>Recipes Go Here</h4>
+                    <div class="section">
+                        <!--   Icon Section   -->
+                        <div class="row">
+                            <div class="col s12 m4">
+                                <div class="icon-block-1">
+                                    <h5 class="center">Recipe 1</h5>
+                                    
+                                </div>
+                            </div>
+                            <div class="col s12 m4">
+                                <div class="icon-block-2">
+                                    <h5 class="center">Recipe 2</h5>
+                                    
+                                </div>
+                            </div>
+                            <div class="col s12 m4">
+                                <div class="icon-block-3">
+                                    <h5 class="center">Recipe 3</h5>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                    <h5 class="header col s12 light">Clever comment about how awesome we are as a team</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="assets/background2.jpg" alt="Unsplashed background img 2"></div>
+    </div>
+    <div class="container">
+        <div class="section">
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                        <h5 class="center">Andres Saenz</h5>
+                        <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                        <h5 class="center">Bryan Kenneweg</h5>
+                        <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+                        <h5 class="center">Bradley Gamboa</h5>
+                        <p class="light">Hello my name is Bradley and I like to Party...jk. Anyways I worked a lot on the front-end and utilizing googles login api to help us track who is accessing our app.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Signout button -->
+    <a class="right-algin" href="http://localhost:3000" onclick="signOut();">Sign out</a>
+    <script>
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function() {
+            console.log('User signed out.');
+        });
+    }
+    </script>
+            <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">API</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+                <!-- Signout button -->
+    <a class="right" href="http://localhost:3000" onclick="signOut();" style="color: white;">Sign out</a>
+    <script>
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function() {
+            console.log('User signed out.');
+        });
+    }
+    </script>
+
+            </div>
+          </div>
+        </footer>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="assets/js/materialize.js"></script>
+    <script src="assets/js/init.js"></script>
+    <!-- Google Sign In -->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+
+</html>

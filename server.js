@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-app.use(express.static('app'));
-require('./public/routing/html-routes.js')(app);
+app.use(express.static('public'));
+require('./routing/html-routes.js')(app);
 
-app.listen(process.env.PORT, function(){
+app.listen(PORT, function(){
 	console.log('Listening on PORT ' + PORT);
 });
