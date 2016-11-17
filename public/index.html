@@ -13,6 +13,13 @@
     <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.emptyDiv').hide();
+    });
+    </script>
 </head>
 
 <body>
@@ -58,10 +65,13 @@
                     <h3 class="header col s12 white-text text-lighten-2 headerFont">Please enter your ingredients below</h5>
                 </div>
                 <div class="row center">
-                    <form>
-                    <input type="text" id="ingredient" placeholder="ENTER YOUR MAIN INGREDIENT">
-                        <button class="btn waves-effect waves-light red lighten-1" type="submit" name="action">Get Cooking</button>
-                    </form>
+                <form id="recipe-form">
+                    <label for="recipe-input"></label>
+                        <input type="text" placeholder="Enter your main ingredient here" id="recipe-input">
+                        <br>
+                        <!-- This button will trigger our AJAX call -->
+                        <input class="btn-large waves-effect waves-light red" id="findRecipe" type="submit" value="Submit">
+                </form>
                 </div>
         <br>
         <br>
@@ -69,31 +79,22 @@
     </div>
     <div class="parallax"><img src="assets/background1.jpg" alt="Unsplashed background img 1"></div>
     </div>
-    <div class="container">
+    <div class="container-fluid emptyDiv">
         <div class="section">
             <div class="row">
                 <div class="col s12 center">
-                    <h4>Recipes Go Here</h4>
                     <div class="section">
+                    <h4>Your Recipes</h4>
                         <!--   Icon Section   -->
                         <div class="row">
                             <div class="col s12 m4">
-                                <div class="icon-block-1">
-                                    <h5 class="center">Recipe 1</h5>
-                                    
-                                </div>
+                                <div class="ibOne"></div>
                             </div>
                             <div class="col s12 m4">
-                                <div class="icon-block-2">
-                                    <h5 class="center">Recipe 2</h5>
-                                    
-                                </div>
+                                <div class="ibTwo"></div>
                             </div>
                             <div class="col s12 m4">
-                                <div class="icon-block-3">
-                                    <h5 class="center">Recipe 3</h5>
-                                    
-                                </div>
+                                <div class="ibThree"></div>
                             </div>
                         </div>
                     </div>
@@ -101,17 +102,7 @@
             </div>
         </div>
     </div>
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row center">
-                    <h5 class="header col s12 light">Clever comment about how awesome we are as a team</h5>
-                </div>
-            </div>
-        </div>
-        <div class="parallax"><img src="assets/background2.jpg" alt="Unsplashed background img 2"></div>
-    </div>
-    <div class="container">
+        <div class="container">
         <div class="section">
             <!--   Icon Section   -->
             <div class="row">
@@ -139,8 +130,21 @@
             </div>
         </div>
     </div>
-    <!-- Signout button -->
-    <a class="right-algin" href="http://localhost:3000" onclick="signOut();">Sign out</a>
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                    <h5 class="header col s12 light">Clever comment about how awesome we are as a team</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="assets/background2.jpg" alt="Unsplashed background img 2"></div>
+    </div>
+            <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+ <!-- Signout button -->
+    <a style="color: white;" class="right" href="http://localhost:3000" onclick="signOut();">Sign out</a>
     <script>
     function signOut() {
         var auth2 = gapi.auth2.getAuthInstance();
@@ -149,39 +153,60 @@
         });
     }
     </script>
-            <footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">API</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                </ul>
               </div>
             </div>
           </div>
           <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-                <!-- Signout button -->
-    <a class="right" href="http://localhost:3000" onclick="signOut();" style="color: white;">Sign out</a>
-    <script>
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function() {
-            console.log('User signed out.');
-        });
-    }
-    </script>
-
+            <div class="container center">
+            © 2016 Copyright Bradley, Andres, Bryan #1
             </div>
           </div>
         </footer>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script>
+    // This .on("click") function will trigger the AJAX Call
+    $('#findRecipe').on('click', function(){
+        $('.emptyDiv').show();
+
+        $(".ibOne").empty();
+        $(".ibTwo").empty();
+        $(".ibThree").empty();
+        // Here we grab the text from the input box 
+        var ingredient = $('#recipe-input').val();
+
+        // Here we assemble our URL 
+        var queryURL = "https://api.edamam.com/search?q=" + ingredient;
+        
+        $.ajax({url: queryURL, method: "Get", dataType: 'jsonp'}).done(function(response) {
+            console.log(response);
+            
+            //pulling and displaying data
+            var title = "<h5>" + response.hits[0].recipe.label + "</h5>";
+            var image = "<img src='" + response.hits[0].recipe.image + "'>";
+            var recipe = "<p>" + response.hits[0].recipe.ingredientLines + "</p>";
+            $(".ibOne").append(title);
+            $(".ibOne").append(image);
+            $(".ibOne").append(recipe);
+
+            var title2 = "<h5>" + response.hits[1].recipe.label + "</h5>"
+            var image2 = "<img src='" + response.hits[1].recipe.image + "'>";
+            var recipe2 = "<p>" + response.hits[1].recipe.ingredientLines + "</p>";
+            $(".ibTwo").append(title2);
+            $(".ibTwo").append(image2);
+            $(".ibTwo").append(recipe2);
+            
+            var title3 = "<h5>" + response.hits[2].recipe.label + "</h5>"
+            var image3 = "<img src='" + response.hits[2].recipe.image + "'>";
+            var recipe3 = "<p>" + response.hits[2].recipe.ingredientLines + "</p>";
+            $(".ibThree").append(title3);
+            $(".ibThree").append(image3);
+            $(".ibThree").append(recipe3);
+            
+    });
+        
+        return false;
+    })
+
+    </script>
     <script src="assets/js/materialize.js"></script>
     <script src="assets/js/init.js"></script>
     <!-- Google Sign In -->
