@@ -70,7 +70,7 @@
                         <input type="text" placeholder="Enter your main ingredient here" id="recipe-input">
                         <br>
                         <!-- This button will trigger our AJAX call -->
-                        <input class="btn-large waves-effect waves-light red" id="findRecipe" type="submit" value="Submit">
+                        <input class="btn-small waves-effect waves-light red" id="findRecipe" type="submit" value="Submit">
                 </form>
                 </div>
         <br>
@@ -181,21 +181,24 @@
             
             //pulling and displaying data
             var title = "<h5>" + response.hits[0].recipe.label + "</h5>";
-            var image = "<img src='" + response.hits[0].recipe.image + "'>";
+            var image = "<a href='" + response.hits[0].recipe.url + "''><img src='" + response.hits[0].recipe.image + "'></a>";
             var recipe = "<p>" + response.hits[0].recipe.ingredientLines + "</p>";
+            
+            
             $(".ibOne").append(title);
             $(".ibOne").append(image);
             $(".ibOne").append(recipe);
 
+
             var title2 = "<h5>" + response.hits[1].recipe.label + "</h5>"
-            var image2 = "<img src='" + response.hits[1].recipe.image + "'>";
+            var image2 = "<a href='" + response.hits[1].recipe.url + "''><img src='" + response.hits[1].recipe.image + "'></a>";
             var recipe2 = "<p>" + response.hits[1].recipe.ingredientLines + "</p>";
             $(".ibTwo").append(title2);
             $(".ibTwo").append(image2);
             $(".ibTwo").append(recipe2);
             
             var title3 = "<h5>" + response.hits[2].recipe.label + "</h5>"
-            var image3 = "<img src='" + response.hits[2].recipe.image + "'>";
+            var image3 = "<a href='" + response.hits[2].recipe.url + "''><img src='" + response.hits[2].recipe.image + "'></a>";
             var recipe3 = "<p>" + response.hits[2].recipe.ingredientLines + "</p>";
             $(".ibThree").append(title3);
             $(".ibThree").append(image3);
