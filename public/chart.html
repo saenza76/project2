@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="google-signin-client_id" content="995828512035-cselasg16c8hap53ma9ei72ga4e5lum0.apps.googleusercontent.com">
+    <title>Lets Make A Meal</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.emptyDiv').hide();
+    });
+    </script>
+</head>
+
+<body>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Let's Make A Meal</a>
+            <!-- Sign in w/Google -->
+            <div id="my-signin2" class="brand-logo right"></div>
+            <script>
+            function onSuccess(googleUser) {
+                // This is where we control what happens after they are logged in
+                var profile = googleUser.getBasicProfile();
+                // console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail());
+            }
+
+            function onFailure(error) {
+                console.log(error);
+            }
+
+            function renderButton() {
+                gapi.signin2.render('my-signin2', {
+                    'scope': 'profile email',
+                    'width': 150,
+                    'height': 50,
+                    'onsuccess': onSuccess,
+                    'onfailure': onFailure
+                });
+            }
+            </script>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="section">
+            <!--   Icon Section   -->
+            <div class="row">
+                <!--  =====CHART CODE GOES BETWEEN HERE ===== -->
+
+				<!-- <img style= "width: 85%;" src="https://2014moonstone.files.wordpress.com/2014/12/barchartcrisps.png"> -->
+
+				<!--  =====CHART CODE GOES BETWEEN HERE ===== -->
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <a style="color: white;" href="index.html">HOME</a>
+                <!-- Signout button -->
+                <a style="color: white;" class="right" href="http://localhost:3000" onclick="signOut();">Sign out</a>
+                <script>
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function() {
+                        console.log('User signed out.');
+                    });
+                }
+                </script>
+            </div>
+        </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container center">
+                © 2016 Copyright Bradley, Andres, Bryan #1
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/materialize.js"></script>
+    <script src="assets/js/init.js"></script>
+    <!-- Google Sign In -->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+
+</html>
