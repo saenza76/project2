@@ -1,3 +1,6 @@
-INSERT INTO `recipe_users`.`ingredients` (`searchWord`, `recipeName`, `ingredient`) VALUES ('bacon', 'Bacon-Wrapped Chicken Wings', '10 fresh whole chicken wings,10 slices thinly sliced bacon,Freshly ground black pepper');
-INSERT INTO `recipe_users`.`ingredients` (`searchWord`, `recipeName`, `ingredient`) VALUES ('chocolate', 'Chocolate Wontons', '1 egg,1 tbsp water,12 wonton wrappers,12 pieces of chocolates,High heat oil for frying,Powdered sugar for dusting');
-INSERT INTO `recipe_users`.`ingredients` (`searchWord`, `recipeName`, `ingredient`) VALUES ('turkey', 'Whole Roast Turkey', '1 turkey (about 16 pounds),1 teaspoon coarse salt,1 tablespoon freshly ground black pepper');
+INSERT INTO `recipe_users`.`ingredients` (`id`, `searchWord`, `searchCount`) VALUES ('1', 'chicken', '6');
+INSERT INTO `recipe_users`.`ingredients` (`id`, `searchWord`, `searchCount`) VALUES ('2', 'tofu', '21');
+INSERT INTO `recipe_users`.`ingredients` (`id`, `searchWord`, `searchCount`) VALUES ('3', 'mushrooms', '3');
+INSERT INTO `recipe_users`.`ingredients` (`id`, `searchWord`, `searchCount`) VALUES ('4', 'whiskey', '5');
+INSERT INTO `recipe_users`.`ingredients` (`id`, `searchWord`, `searchCount`) VALUES ('5', 'oregano', '2');
+INSERT INTO `recipe_users`.`ingredients` (`id`, `searchWord`, `searchCount`) VALUES ('6', 'oranges', '3');
