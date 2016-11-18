@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
     <script>
     $(document).ready(function() {
         $('.emptyDiv').hide();
@@ -60,17 +61,54 @@
             <!--   Icon Section   -->
             <div class="row">
                 <!--  =====CHART CODE GOES BETWEEN HERE ===== -->
-
-				<!-- <img style= "width: 85%;" src="https://2014moonstone.files.wordpress.com/2014/12/barchartcrisps.png"> -->
-
-				<!--  =====CHART CODE GOES BETWEEN HERE ===== -->
+                <canvas id="myChart" width="400" height="200"></canvas>
+                <script>
+                var ctx = document.getElementById("myChart");
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ["Chicken", "Tofu", "Mushrooms", "Whiskey", "Oregano", "Oranges"],
+                        datasets: [{
+                            label: '# of Searches',
+                            data: [6, 21, 3, 5, 2, 3],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+                </script>
+                <!--  =====CHART CODE GOES BETWEEN HERE ===== -->
             </div>
         </div>
     </div>
     <footer class="page-footer">
         <div class="container">
             <div class="row">
-                <a style="color: white;" href="index.html">HOME</a>
+                <a style="color: white;" href="index.html">Home</a>
                 <!-- Signout button -->
                 <a style="color: white;" class="right" href="http://localhost:3000" onclick="signOut();">Sign out</a>
                 <script>
