@@ -48,6 +48,10 @@ p {
   line-height: 2rem;
 }
 
+a:link { 
+    color: black;
+}
+
 .button-collapse {
   color: #26a69a;
 }
