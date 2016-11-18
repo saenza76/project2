@@ -5,6 +5,12 @@
   font-family: 'Oswald', sans-serif;
 }
 
+.headerFont2{
+  text-shadow: 5px 2px 4px black;
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+}
+
 h1{
   font-size: 100px;
 }
