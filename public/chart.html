@@ -60,9 +60,10 @@
         <div class="section">
             <!--   Icon Section   -->
             <div class="row">
-                
-                <!-- Console logs the contents of the DB -->
-                <script type="text/javascript">
+
+                <!--  =====CHART CODE GOES BETWEEN HERE ===== -->
+                <canvas id="myChart" width="400" height="200"></canvas>
+                <script>
                 $(document).ready(function() {
 
                     // calls our renderBurger function to populate the page with all burgers from the database 
@@ -73,7 +74,7 @@
 
                         var originURL = document.location.origin;
 
-                        // AJAX call which will come back with info about the burgers in our database
+                        // AJAX call which will come back with info about the ingredients in our database
                         $.ajax({
                             url: originURL + '/api',
                             method: 'GET'
@@ -86,10 +87,6 @@
                     };
 
                 });
-                </script>
-                <!--  =====CHART CODE GOES BETWEEN HERE ===== -->
-                <canvas id="myChart" width="400" height="200"></canvas>
-                <script>
                 var ctx = document.getElementById("myChart");
                 var myChart = new Chart(ctx, {
                     type: 'bar',
@@ -97,7 +94,7 @@
                         labels: ["Chicken", "Tofu", "Mushrooms", "Whiskey", "Oregano", "Oranges"],
                         datasets: [{
                             label: '# of Searches',
-                            data: [6, 21, 3, 5, 2, 3],
+                            data: [15, 21, 3, 5, 2, 3],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',
                                 'rgba(54, 162, 235, 0.2)',

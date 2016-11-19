@@ -4,10 +4,9 @@ var connection = require('./connection.js');
 // defining functions for later use
 var orm = {
 
-	// function for adding burgers to database
+	// function for adding ingredient to database
 	addToDatabase: function(ingredientname) {
-		console.log('** ingredientname **')
-		console.log(ingredientname)
+		console.log(ingredientname + ' we added 1')
 		var input = 'UPDATE ingredients SET searchCount = searchCount + 1 WHERE id = 1';
 		connection.query(input, function(err, result) {
             if (err) throw err;
