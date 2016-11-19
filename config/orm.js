@@ -5,10 +5,10 @@ var connection = require('./connection.js');
 var orm = {
 
 	// function for adding burgers to database
-	addToDatabase: function(burgername) {
-		console.log('** burgername **')
-		console.log(burgername)
-		var input = 'INSERT INTO burgers (burger_name) VALUE ("' + burgername + '");';
+	addToDatabase: function(ingredientname) {
+		console.log('** ingredientname **')
+		console.log(ingredientname)
+		var input = 'UPDATE ingredients SET searchCount = searchCount + 1 WHERE id = 1';
 		connection.query(input, function(err, result) {
             if (err) throw err;
         });
@@ -16,21 +16,13 @@ var orm = {
 
 	// function which selects all burgers in the database
 	selectAll: function(callback) {
-		var input = 'SELECT * FROM burgers';
+		var input = 'SELECT * FROM ingredients';
 		connection.query(input, function(err, result) {
             if (err) throw err;
 
             // console.log(result)
             callback(result)
 
-        });
-	},
-
-	// function which changes the burger from not eaten to eaten
-	deleteBurger: function(burgerid) {
-		var input = 'UPDATE burgers SET devoured=TRUE WHERE id='+burgerid+';';
-		connection.query(input, function(err, result) {
-            if (err) throw err;
         });
 	}
 

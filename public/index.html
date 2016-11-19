@@ -213,6 +213,32 @@
     })
 
     </script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        // when the 'Submit' button is pressed make an AJAX call to the server which will then insert the burger into our database
+        $('#findRecipe').click(function() {
+
+            var originURL = document.location.origin;
+
+            var recipeInfo = {
+                name: $('#recipe-input').val()
+            };
+
+            $('#recipe-input').val(null);
+
+            $.post(originURL + '/api', recipeInfo).done(function(data) {
+
+                console.log(recipeInfo);
+
+            });
+
+        });
+
+    });
+    </script>
+
     <script src="assets/js/materialize.js"></script>
     <script src="assets/js/init.js"></script>
     <!-- Google Sign In -->
