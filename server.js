@@ -20,6 +20,9 @@ app.use(express.static('public'));
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + '/public'));
 
+// requriing of the api routes
+require('./routing/api-routes.js')(app);
+
 app.listen(PORT, function() {
     console.log('Listening on PORT ' + PORT);
 });

@@ -60,6 +60,33 @@
         <div class="section">
             <!--   Icon Section   -->
             <div class="row">
+                
+                <!-- Console logs the contents of the DB -->
+                <script type="text/javascript">
+                $(document).ready(function() {
+
+                    // calls our renderBurger function to populate the page with all burgers from the database 
+                    renderIngredients();
+
+                    // when called will render all ingredients from the database onto the page
+                    function renderIngredients() {
+
+                        var originURL = document.location.origin;
+
+                        // AJAX call which will come back with info about the burgers in our database
+                        $.ajax({
+                            url: originURL + '/api',
+                            method: 'GET'
+                        }).done(function(response) {
+
+                            console.log(response)
+
+                        });
+
+                    };
+
+                });
+                </script>
                 <!--  =====CHART CODE GOES BETWEEN HERE ===== -->
                 <canvas id="myChart" width="400" height="200"></canvas>
                 <script>
