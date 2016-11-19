@@ -6,13 +6,9 @@ var path = require('path');
 var app = express();
 var PORT = process.env.PORT || 3000;
 
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'recipe_users'
-});
+// connection and orm
+var connection = require('./config/connection.js');
+var orm = require('./config/orm.js');
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -23,29 +19,6 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(express.static('public'));
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + '/public'));
-
-connection.connect(function(err) {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    };
-
-    console.log('connected as id ' + connection.threadId);
-
-})
-
-//root get route
-app.get('/', function(req, res) {
-
-
-});
-
-
-//post route -> back to home
-app.post('/create', function(req, res) {
-
-
-});
 
 app.listen(PORT, function() {
     console.log('Listening on PORT ' + PORT);
